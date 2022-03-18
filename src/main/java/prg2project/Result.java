@@ -1,4 +1,5 @@
 package prg2project;
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
@@ -10,13 +11,36 @@ public class Result {
 
     public static void main(String[] args) {
         Scanner scan = new Scanner(System.in);
-        System.out.println("Enter Number of Students");
-        int students = scan.nextInt();
-        System.out.println(students);
+        int students;
+        while (true) {
+            System.out.println("Enter Number of Students");
+            if (scan.hasNextInt()) {
+                int temp = scan.nextInt();
+                if (temp > 0 && temp <= 60) {
+                    students = temp;
+                    break;
+                }
+            } else {
+                scan.next();
+            }
+        }
+
         List<Integer> grades = new ArrayList<>();
-        for (int i=0; i<students;i++){
-            System.out.println("Enter Grade of Student " + (i+1));
-            grades.add(scan.nextInt());
+
+        for (int i = 0; i < students; i++) {
+            while (true) {
+                System.out.println("Enter Grade of Student " + (i + 1));
+                if (scan.hasNextInt()) {
+                    int temp = scan.nextInt();
+                    if (temp >= 0 && temp <= 100) {
+                        grades.add(temp);
+                        break;
+                    }
+                } else {
+                    scan.next();
+                }
+
+            }
         }
     }
 }
