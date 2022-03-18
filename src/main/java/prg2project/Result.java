@@ -15,7 +15,7 @@ public class Result {
         System.out.println(students);
         List<Integer> grades = new ArrayList<>();
         for (int i=0; i<students;i++){
-            System.out.println("Enter Grade of Student" + (i+1));
+            System.out.println("Enter Grade of Student " + (i+1));
             grades.add(scan.nextInt());
         }
     }
