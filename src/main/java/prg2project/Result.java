@@ -6,7 +6,15 @@ import java.util.Scanner;
 
 public class Result {
     public static List<Integer> gradingStudents(List<Integer> grades) {
-        return null;
+        List<Integer> result = new ArrayList<>();
+
+        for(int i=0; i<grades.size(); i++){
+            if(grades.get(i)<38){
+                result.add(grades.get(i));
+            }
+        }
+
+        return result;
     }
 
     public static void main(String[] args) {
