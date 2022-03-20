@@ -11,6 +11,24 @@ public class Result {
         for(int i=0; i<grades.size(); i++){
             if(grades.get(i)<38){
                 result.add(grades.get(i));
+            }else{
+                if(grades.get(i)%5==0){
+                    result.add(grades.get(i));
+                }else{
+                    int temp = grades.get(i);
+                    while (true){
+                        if(temp%5==0){
+                            if(temp-grades.get(i)<3){
+                                result.add(temp);
+                            }else{
+                                result.add(grades.get(i));
+                            }
+                            break;
+                        }
+                        temp++;
+
+                    }
+                }
             }
         }
 
