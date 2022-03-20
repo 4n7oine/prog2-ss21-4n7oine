@@ -25,5 +25,19 @@ class ResultTest {
         assertEquals(expected, actual);
     }
 
+    @Test
+    @DisplayName("Grades that should get rounded")
+    void gradingStudentswithroundedgrades() {
+        List<Integer> input = new ArrayList<>();
+        for( int i=38; i<100; i++){
+            input.add(i);
+            if((i+1)%10==0){
+                i = i+8;
+            }
+        }
+        List<Integer> actual = Result.gradingStudents(input);
+        List<Integer> expected = List.of(40,40,50,50,60,60,70,70,80,80,90,90,100,100);
+        assertEquals(expected, actual);
+    }
 
 }
