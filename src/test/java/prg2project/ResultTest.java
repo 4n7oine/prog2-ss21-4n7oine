@@ -15,6 +15,7 @@ class ResultTest {
     @Test
     @DisplayName("Grades below 38")
     void gradingStudentsbelow38() {
+        //Generate List of grades that doesn't should be rounded
         List<Integer> input = new ArrayList<>();
         List<Integer> expected = new ArrayList<>();;
         for(int i=0; i<38; i++){
@@ -28,15 +29,30 @@ class ResultTest {
     @Test
     @DisplayName("Grades that should get rounded")
     void gradingStudentswithroundedgrades() {
+        // Generate Grades that must be rounded
         List<Integer> input = new ArrayList<>();
         for( int i=38; i<100; i++){
             input.add(i);
-            if((i+1)%10==0){
-                i = i+8;
+            if((i+1)%10==0 || (i+1)%5==0){
+                i = i+3;
             }
         }
         List<Integer> actual = Result.gradingStudents(input);
-        List<Integer> expected = List.of(40,40,50,50,60,60,70,70,80,80,90,90,100,100);
+        //Generate expected rounded grades
+        List<Integer> expected = new ArrayList<>();
+        int counter = 40;
+        while(true){
+           if(counter == 100){
+               expected.add(counter);
+               expected.add(counter);
+               break;
+           }else{
+               expected.add(counter);
+               expected.add(counter);
+               counter=counter+5;
+           }
+        }
+
         assertEquals(expected, actual);
     }
 
