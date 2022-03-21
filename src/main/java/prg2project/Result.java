@@ -8,6 +8,10 @@ public class Result {
     public static List<Integer> gradingStudents(List<Integer> grades) {
         List<Integer> result = new ArrayList<>();
 
+        if(grades==null){
+            result = null;
+            return result;
+        }
         for(int i=0; i<grades.size(); i++){
             if(grades.get(i)<38){
                 result.add(grades.get(i));
