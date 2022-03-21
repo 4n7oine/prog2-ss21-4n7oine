@@ -18,7 +18,7 @@ public class Result {
     public static List<Integer> gradingStudents(List<Integer> grades) {
         List<Integer> result = new ArrayList<>();
 
-        if(grades==null){
+        if(isListNull(grades)){
             return result;
         }
 
