@@ -26,6 +26,13 @@ public class Result {
             throw new IllegalArgumentException("List contains null element");
         }
 
+        for (int i = 0; i < grades.size(); i++) {
+            if(!(checkRangeGrades(grades.get(i)))){
+                throw new IllegalArgumentException("Grade not in the Range - Must >=0 && <=100");
+            }
+        }
+
+
         //Old Code
         /*for(int i=0; i<grades.size(); i++){
             if(grades.get(i)<38){
@@ -75,7 +82,6 @@ public class Result {
     }
 
     protected static Integer nextMultipleOfFive(Integer integer){
-        int temp = integer;
         while (!(integer%5==0)){
             integer++;
         }
@@ -87,7 +93,7 @@ public class Result {
     }
 
     protected static boolean checkRangeGrades(int value) {
-        return (value > 0 && value <= 100);
+        return (value >= 0 && value <= 100);
     }
 
     protected static boolean isListNull(List<Integer> grades) {
@@ -99,39 +105,6 @@ public class Result {
         return (grades.contains(null));
     }
 
-    public static void main(String[] args) {
-
-        Scanner scan = new Scanner(System.in);
-
-        int students;
-
-        while (true) {
-            System.out.println("Enter Number of Students");
-            if (scan.hasNextInt()) {
-                students = scan.nextInt();
-                if(checkRangeStudents(students));
-                   break;
-            } else {
-                scan.next();
-            }
-        }
-
-        List<Integer> grades = new ArrayList<>();
-
-        for (int i = 0; i < students; i++) {
-            while (true) {
-                System.out.println("Enter Grade of Student " + (i + 1));
-                if (scan.hasNextInt()) {
-                    int temp = scan.nextInt();
-                    if(checkRangeGrades(students));
-                    break;
-                } else {
-                    scan.next();
-                }
-
-            }
-        }
-    }
 
 
 }
