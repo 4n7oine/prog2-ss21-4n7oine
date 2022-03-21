@@ -126,8 +126,6 @@ class ResultTest {
     }
 
 
-
-
     @Test
     @DisplayName("Round Grade - Test 1 - Grade 43")
     void Round_Grade_Test1() {
@@ -171,7 +169,6 @@ class ResultTest {
         int actual = Result.roundGrade(input);
         assertEquals(expected, actual);
     }
-
 
     @Test
     @DisplayName("Test Grades that should get rounded")

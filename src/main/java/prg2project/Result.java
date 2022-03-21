@@ -33,30 +33,6 @@ public class Result {
         }
 
 
-        //Old Code
-        /*for(int i=0; i<grades.size(); i++){
-            if(grades.get(i)<38){
-                result.add(grades.get(i));
-            }else{
-                if(grades.get(i)%5==0){
-                    result.add(grades.get(i));
-                }else{
-                    int temp = grades.get(i);
-                    while (true){
-                        if(temp%5==0){
-                            if(temp-grades.get(i)<3){
-                                result.add(temp);
-                            }else{
-                                result.add(grades.get(i));
-                            }
-                            break;
-                        }
-                        temp++;
-                    }
-                }
-            }
-        }*/
-
         for(int i=0; i<grades.size(); i++) {
             if(checkIfGradeShouldGetRounded(grades.get(i))){
                 result.add(roundGrade(grades.get(i)));
@@ -69,11 +45,13 @@ public class Result {
 
     }
 
-    protected static Integer roundGrade(Integer integer) {
+
+
+    protected static int roundGrade(int integer) {
         return nextMultipleOfFive(integer);
     }
 
-    protected static boolean checkIfGradeShouldGetRounded(Integer integer) {
+    protected static boolean checkIfGradeShouldGetRounded(int integer) {
         if(integer<38 || (nextMultipleOfFive(integer)-integer>2 || integer==nextMultipleOfFive(integer))){
             return false;
         }else{
@@ -81,7 +59,7 @@ public class Result {
         }
     }
 
-    protected static Integer nextMultipleOfFive(Integer integer){
+    protected static int nextMultipleOfFive(int integer){
         while (!(integer%5==0)){
             integer++;
         }
@@ -99,7 +77,6 @@ public class Result {
     protected static boolean isListNull(List<Integer> grades) {
         return (grades==null);
     }
-
 
     protected static boolean listContainsNullElement(List<Integer> grades) {
         return (grades.contains(null));
