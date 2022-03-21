@@ -9,7 +9,6 @@ public class Result {
         List<Integer> result = new ArrayList<>();
 
         if(grades==null){
-            result = null;
             return result;
         }
         for(int i=0; i<grades.size(); i++){
