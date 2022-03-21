@@ -19,10 +19,15 @@ public class Result {
         List<Integer> result = new ArrayList<>();
 
         if(isListNull(grades)){
-            return result;
+            throw new IllegalArgumentException("List is null");
         }
 
-        for(int i=0; i<grades.size(); i++){
+        if(listContainsNullElement(grades)){
+            throw new IllegalArgumentException("List contains null element");
+        }
+
+        //Old Code
+        /*for(int i=0; i<grades.size(); i++){
             if(grades.get(i)<38){
                 result.add(grades.get(i));
             }else{
@@ -43,10 +48,38 @@ public class Result {
                     }
                 }
             }
+        }*/
+
+        for(int i=0; i<grades.size(); i++) {
+            if(checkIfGradeShouldGetRounded(grades.get(i))){
+                result.add(roundGrade(grades.get(i)));
+            }else{
+                result.add(grades.get(i));
+            }
         }
 
         return result;
 
+    }
+
+    protected static Integer roundGrade(Integer integer) {
+        return nextMultipleOfFive(integer);
+    }
+
+    protected static boolean checkIfGradeShouldGetRounded(Integer integer) {
+        if(integer<38 || (nextMultipleOfFive(integer)-integer>2 || integer==nextMultipleOfFive(integer))){
+            return false;
+        }else{
+            return true;
+        }
+    }
+
+    protected static Integer nextMultipleOfFive(Integer integer){
+        int temp = integer;
+        while (!(integer%5==0)){
+            integer++;
+        }
+        return integer;
     }
 
     protected static boolean checkRangeStudents(int value) {
@@ -62,6 +95,9 @@ public class Result {
     }
 
 
+    protected static boolean listContainsNullElement(List<Integer> grades) {
+        return (grades.contains(null));
+    }
 
     public static void main(String[] args) {
 

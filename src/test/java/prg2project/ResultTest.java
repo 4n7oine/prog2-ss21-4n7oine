@@ -4,6 +4,7 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -15,18 +16,154 @@ import static org.junit.jupiter.api.Assertions.*;
 class ResultTest {
 
     @Test
+    @DisplayName("Check if List contains Null-Element")
+    void check_if_list_contains_nullElement_1() {
+        List<Integer> input = new ArrayList<>(Arrays.asList(0, 23, 54, null, 45));
+        assertTrue(Result.listContainsNullElement(input));
+    }
+
+    @Test
+    @DisplayName("Check if List contains Null-Element")
+    void check_if_list_contains_nullElement_2() {
+        List<Integer> input = new ArrayList<>(Arrays.asList(0, 23, 54, 88, 45));
+        assertFalse(Result.listContainsNullElement(input));
+    }
+
+
+    @Test
+    @DisplayName("Check if Grade should be rounded - Test 1")
+    void check_if_grade_should_get_rounded_1() {
+        int grade = 45;
+        assertFalse(Result.checkIfGradeShouldGetRounded(grade));
+    }
+
+
+    @Test
+    @DisplayName("Check if Grade should be rounded - Test 2")
+    void check_if_grade_should_get_rounded_2() {
+        int grade = 44;
+        assertTrue(Result.checkIfGradeShouldGetRounded(grade));
+    }
+
+    @Test
+    @DisplayName("Check if Grade should be rounded - Test 3")
+    void check_if_grade_should_get_rounded_3() {
+        int grade = 98;
+        assertTrue(Result.checkIfGradeShouldGetRounded(grade));
+    }
+
+    @Test
+    @DisplayName("Check if Grade should be rounded - Test 4")
+    void check_if_grade_should_get_rounded_4() {
+        int grade = 35;
+        assertFalse(Result.checkIfGradeShouldGetRounded(grade));
+    }
+
+    @Test
     @DisplayName("Test Grades below 38")
     void gradingStudentsbelow38() {
         //Generate List of grades that doesn't should be rounded
-        List<Integer> input = new ArrayList<>();
-        List<Integer> expected = new ArrayList<>();;
-        for(int i=0; i<38; i++){
-            input.add(i);
-            expected.add(i);
-        }
+        List<Integer> input = new ArrayList<>(Arrays.asList(0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37));
+        List<Integer> expected = new ArrayList<>(Arrays.asList(0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37));
+
         List<Integer> actual = Result.gradingStudents(input);
         assertEquals(expected, actual);
     }
+
+    @Test
+    @DisplayName("Next Multiple of 5 - Test 1")
+    void nextMultipleOf5_Test1() {
+        //Generate List of grades that doesn't should be rounded
+        int input = 43;
+        int expected = 45;
+
+        int actual = Result.nextMultipleOfFive(input);
+        assertEquals(expected, actual);
+    }
+
+    @Test
+    @DisplayName("Next Multiple of 5 - Test 2")
+    void nextMultipleOf5_Test2() {
+        //Generate List of grades that doesn't should be rounded
+        int input = 44;
+        int expected = 45;
+
+        int actual = Result.nextMultipleOfFive(input);
+        assertEquals(expected, actual);
+    }
+
+    @Test
+    @DisplayName("Next Multiple of 5 - Test 3")
+    void nextMultipleOf5_Test3() {
+        //Generate List of grades that doesn't should be rounded
+        int input = 43;
+        int expected = 45;
+
+        int actual = Result.nextMultipleOfFive(input);
+        assertEquals(expected, actual);
+    }
+
+    @Test
+    @DisplayName("Next Multiple of 5 - Test 4")
+    void nextMultipleOf5_Test4() {
+        //Generate List of grades that doesn't should be rounded
+        int input = 41;
+        int expected = 45;
+
+        int actual = Result.nextMultipleOfFive(input);
+        assertEquals(expected, actual);
+    }
+
+
+
+
+    @Test
+    @DisplayName("Round Grade - Test 1")
+    void Round_Grade_Test1() {
+        //Generate List of grades that doesn't should be rounded
+        int input = 43;
+        int expected = 45;
+
+        int actual = Result.roundGrade(input);
+        assertEquals(expected, actual);
+    }
+
+    @Test
+    @DisplayName("Round Grade - Test 2")
+    void Round_Grade_Test2() {
+        //Generate List of grades that doesn't should be rounded
+        int input = 44;
+        int expected = 45;
+
+        int actual = Result.roundGrade(input);
+        assertEquals(expected, actual);
+    }
+
+    @Test
+    @DisplayName("Round Grade - Test 3")
+    void Round_Grade_Test3() {
+        //Generate List of grades that doesn't should be rounded
+        int input = 98;
+        int expected = 100;
+
+        int actual = Result.roundGrade(input);
+        assertEquals(expected, actual);
+    }
+
+    @Test
+    @DisplayName("Round Grade - Test 4")
+    void Round_Grade_Test4() {
+        //Generate List of grades that doesn't should be rounded
+        int input = 99;
+        int expected = 100;
+
+        int actual = Result.roundGrade(input);
+        assertEquals(expected, actual);
+    }
+
+
+
+
 
     @Test
     @DisplayName("Test Grades that should get rounded")
@@ -55,6 +192,8 @@ class ResultTest {
            }
         }
 
+        System.out.println(input.toString());
+        System.out.println(expected.toString());
         assertEquals(expected, actual);
     }
 
