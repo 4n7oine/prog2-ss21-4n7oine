@@ -14,7 +14,6 @@ import static org.junit.jupiter.api.Assertions.*;
 
 class ResultTest {
 
-
     @Test
     @DisplayName("Test Grades below 38")
     void gradingStudentsbelow38() {
