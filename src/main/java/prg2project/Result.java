@@ -1,10 +1,20 @@
 package prg2project;
 
+import java.net.Proxy;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
+// Link to my Repo
+// https://github.com/4n7oine/prog2-ss21-4n7oine
+// Lanners Antoine
+
+// Class with static method to calculate rounded grades
+
 public class Result {
+
+    //Method to calculate rounded grades and return them as a List<Integer>
+
     public static List<Integer> gradingStudents(List<Integer> grades) {
         List<Integer> result = new ArrayList<>();
 
@@ -39,7 +49,6 @@ public class Result {
 
     }
 
-
     protected static boolean checkRangeStudents(int value) {
         return (value > 0 && value <= 60);
     }
@@ -47,6 +56,11 @@ public class Result {
     protected static boolean checkRangeGrades(int value) {
         return (value > 0 && value <= 100);
     }
+
+    protected static boolean isListNull(List<Integer> grades) {
+        return (grades==null);
+    }
+
 
 
     public static void main(String[] args) {
