@@ -56,4 +56,14 @@ class ResultTest {
         assertEquals(expected, actual);
     }
 
+    @Test
+    @DisplayName("Check Handling for Null-List")
+    void handlingNullList() {
+        //Generate List of grades that doesn't should be rounded
+        List<Integer> input = null;
+        List<Integer> expected = null;
+        List<Integer> actual = Result.gradingStudents(null);
+        assertEquals(expected, actual);
+    }
+
 }
