@@ -1,7 +1,5 @@
 package prg2project;
 
-import org.junit.jupiter.api.AfterEach;
-import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
@@ -11,6 +9,7 @@ import java.util.List;
 import static org.junit.jupiter.api.Assertions.*;
 
 class ResultTest {
+
 
     @Test
     @DisplayName("Grades below 38")
@@ -64,6 +63,39 @@ class ResultTest {
         List<Integer> expected = new ArrayList<Integer>();
         List<Integer> actual = Result.gradingStudents(null);
         assertEquals(expected, actual);
+    }
+
+
+    @Test
+    void checkRangeStudents_below_0() {
+        assertFalse(Result.checkRangeStudents(-1));
+    }
+
+    @Test
+    void checkRangeStudents_0() {
+        assertFalse(Result.checkRangeStudents(0));
+    }
+
+    @Test
+    void checkRangeStudents_in_Range() {
+        assertTrue(Result.checkRangeStudents(10));
+    }
+    @Test
+    void checkRangeStudents_too_high() {
+        assertFalse(Result.checkRangeStudents(100));
+    }
+
+    @Test
+    void checkRangeGrades_below_0() {
+        assertFalse(Result.checkRangeGrades(-1));
+    }
+    @Test
+    void checkRangeGrades_in_Range() {
+        assertTrue(Result.checkRangeGrades(10));
+    }
+    @Test
+    void checkRangeGrades_too_high() {
+        assertFalse(Result.checkRangeGrades(110));
     }
 
 }

@@ -11,6 +11,7 @@ public class Result {
         if(grades==null){
             return result;
         }
+
         for(int i=0; i<grades.size(); i++){
             if(grades.get(i)<38){
                 result.add(grades.get(i));
@@ -38,17 +39,28 @@ public class Result {
 
     }
 
+
+    protected static boolean checkRangeStudents(int value) {
+        return (value > 0 && value <= 60);
+    }
+
+    protected static boolean checkRangeGrades(int value) {
+        return (value > 0 && value <= 100);
+    }
+
+
     public static void main(String[] args) {
+
         Scanner scan = new Scanner(System.in);
+
         int students;
+
         while (true) {
             System.out.println("Enter Number of Students");
             if (scan.hasNextInt()) {
-                int temp = scan.nextInt();
-                if (temp > 0 && temp <= 60) {
-                    students = temp;
-                    break;
-                }
+                students = scan.nextInt();
+                if(checkRangeStudents(students));
+                   break;
             } else {
                 scan.next();
             }
@@ -61,16 +73,15 @@ public class Result {
                 System.out.println("Enter Grade of Student " + (i + 1));
                 if (scan.hasNextInt()) {
                     int temp = scan.nextInt();
-                    if (temp >= 0 && temp <= 100) {
-                        grades.add(temp);
-                        break;
-                    }
+                    if(checkRangeGrades(students));
+                    break;
                 } else {
                     scan.next();
                 }
 
             }
         }
-
     }
+
+
 }
